@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "320933220562",
+    "firebase_url": "https://findjob-c5572-default-rtdb.firebaseio.com/",
+    "project_id": "findjob-c5572",
+    "storage_bucket": "findjob-c5572.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320933220562:android:83addd61c4ef9705d0dd0b",
+        "android_client_info": {
+          "package_name": "com.example.jhunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320933220562-pcqv2bge0re2coiitpmh4acini7t0nee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuEFg0QAiacdnEK8dJX0_9dpWLd1-DdlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320933220562-pcqv2bge0re2coiitpmh4acini7t0nee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
