@@ -61,10 +61,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/j3.png
-    - assets/welcome2.jpg
-    - assets/logo.jpg
-    - assets/working.jpg
+    - assets/
   fonts:
     - family: Circular
       fonts:

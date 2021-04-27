@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jhunt/theme/routes.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:jhunt/screens/companyregister_screen.dart';
+import 'package:jhunt/screens/login_screen.dart';
 
 class Register extends StatefulWidget {
+  static const String authRegister = "auth-register";
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -171,7 +172,7 @@ class _RegisterState extends State<Register> {
             if(user != null)
             {
               await FirebaseAuth.instance.currentUser.updateProfile(displayName: _usernameController.text);
-              Navigator.of(context).pushNamed(AppRoutes.menu);
+              //TODO: Fix Navigator.of(context).pushNamed(AppRoutes.menu);
 
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Registration Successful')));
@@ -217,7 +218,7 @@ class _RegisterState extends State<Register> {
 
             MaterialButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(AppRoutes.authLogin);
+                  Navigator.of(context).pushNamed(Login.authLogin);
                 },
                 child: Text(
                   "Login",
@@ -266,7 +267,7 @@ class _RegisterState extends State<Register> {
 
             MaterialButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(AppRoutes.company);
+                  Navigator.of(context).pushNamed(Registercompany.company);
                 },
                 child: Text(
                   "Register here",

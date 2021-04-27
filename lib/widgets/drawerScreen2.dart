@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jhunt/companyregister_screen.dart';
-import 'package:jhunt/configuration.dart';
-import 'package:jhunt/homeScreen.dart';
-import 'package:jhunt/jobscreen.dart';
-import 'package:jhunt/resume.dart';
-import 'package:jhunt/screen3.dart';
-import 'package:jhunt/theme/routes.dart';
+import 'package:jhunt/screens/companyregister_screen.dart';
+import 'package:jhunt/models/configuration.dart';
+import 'package:jhunt/screens/home_screen.dart';
+import 'package:jhunt/screens/jobscreen.dart';
+import 'package:jhunt/screens/resume.dart';
+import 'package:jhunt/screens/screen3.dart';
 
 class DrawerScreen2 extends StatefulWidget {
   @override
@@ -104,16 +103,16 @@ class _DrawerScreen2State extends State<DrawerScreen2>{
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          createDrawerHeader(),
+          _createDrawerHeader(),
 
-          createDrawerBodyItem(
+          _createDrawerBodyItem(
             icon: Icons.account_circle,
             text: 'See my companies',
             onTap: () =>
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Resume()) ),
           ),
-          createDrawerBodyItem(
+          _createDrawerBodyItem(
             icon: Icons.account_circle,
             text: 'See Applications',
             onTap: () =>
@@ -121,15 +120,15 @@ class _DrawerScreen2State extends State<DrawerScreen2>{
                     context, MaterialPageRoute(builder: (context) => Screen3()) ),
           ),
 
-          createDrawerBodyItem(
+          _createDrawerBodyItem(
             icon: Icons.event_note,
             text: 'Add Job',
             onTap: () =>
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Jobscreen()) ),
+                    context, MaterialPageRoute(builder: (context) => JobScreen()) ),
           ),
           Divider(),
-          createDrawerBodyItem(
+          _createDrawerBodyItem(
             icon: Icons.notifications_active,
             text: 'Register New Company',
             onTap: () =>
@@ -146,7 +145,7 @@ class _DrawerScreen2State extends State<DrawerScreen2>{
   }
 }
 
-Widget createDrawerHeader() {
+Widget _createDrawerHeader() {
   return DrawerHeader(
       margin: EdgeInsets.zero,
       padding: EdgeInsets.zero,
@@ -166,7 +165,7 @@ Widget createDrawerHeader() {
       ]));
 }
 
-Widget createDrawerBodyItem(
+Widget _createDrawerBodyItem(
     {IconData icon, String text, GestureTapCallback onTap}) {
   return ListTile(
     title: Row(

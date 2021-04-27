@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:jhunt/screen2.dart';
+import 'package:jhunt/screens/screen2.dart';
 //import 'package:jhunt/views/companyhome_screen.dart';
 
-void main() => runApp(Jobscreen());
+//void main() => runApp(JobScreen());
 
-class Jobscreen extends StatefulWidget {
+class JobScreen extends StatefulWidget {
 
   @override
-  _JobscreenState createState() => _JobscreenState();
+  _JobScreenState createState() => _JobScreenState();
 }
 
-class _JobscreenState extends State<Jobscreen> {
+class _JobScreenState extends State<JobScreen> {
 
   final referenceDatabase = FirebaseDatabase.instance;
   final _formKey = GlobalKey<FormState>();
@@ -213,7 +213,7 @@ class _JobscreenState extends State<Jobscreen> {
                 //company home route deleted
                // Navigator.push(context,
                  //   new MaterialPageRoute(builder: (context) => new CompanyHomePage()));
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
+               // Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
 
 
 

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:jhunt/homeScreen.dart';
+import 'package:jhunt/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'login_screen.dart';
 
-class SignIn extends StatefulWidget {
+class SignInGoogle extends StatefulWidget {
+
   @override
-  _SignIn createState() => _SignIn();
+  _SignInGoogle createState() => _SignInGoogle();
 }
 
-class _SignIn extends State<SignIn> {
+class _SignInGoogle extends State<SignInGoogle> {
   bool _isLoggedIn = false;
   GoogleSignInAccount _userObj;
   String userId;

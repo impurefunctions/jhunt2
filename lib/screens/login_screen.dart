@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jhunt/theme/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:jhunt/screens/screens.dart';
 class Login extends StatefulWidget {
+
+  static const String authLogin = "/auth-login";
   @override
   _LoginState createState() => _LoginState();
 }
@@ -142,7 +143,7 @@ class _LoginState extends State<Login> {
             if(user != null)
             {
 
-              Navigator.of(context).pushNamed(AppRoutes.menu);
+              //TODO: Fix Navigator.of(context).pushNamed(AppRoutes.menu);
             }
 
 
@@ -183,7 +184,7 @@ class _LoginState extends State<Login> {
             MaterialButton(
                 onPressed: ()
                 {
-                  Navigator.of(context).pushNamed(AppRoutes.authRegister);
+                  Navigator.of(context).pushNamed(Register.authRegister);
                 },
                 child: Text(
                   "Signup",

@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jhunt/provider/google_sign_in.dart';
-import 'package:jhunt/background_painter.dart';
-import 'package:jhunt/logged_in_widget.dart';
-import 'package:jhunt/sign_up_widget.dart';
+import 'package:jhunt/services/google_sign_in.dart';
+import 'package:jhunt/models/background_painter.dart';
+import 'package:jhunt/widgets/logged_in_widget.dart';
+import 'package:jhunt/widgets/sign_up_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: ChangeNotifierProvider(

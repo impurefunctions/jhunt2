@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:jhunt/screen2.dart';
+import 'package:jhunt/screens/screen2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:jhunt/views/menu.dart';
-void main() => runApp(Resume());
+//void main() => runApp(Resume());
 
 class Resume extends StatefulWidget {
+
+  static const String resume = "/resume";
 
   @override
   _ResumeState createState() => _ResumeState();
@@ -254,7 +256,7 @@ class _ResumeState extends State<Resume> {
           ),
         ),
         onPressed: () {
-          String uid=getStringValuesSF();
+          String uid=_getStringValuesSF();
           ref.child("cv's").child(uid).set({
             "surname":_surnameController.text,
           "email": _emailController.text,
@@ -272,7 +274,7 @@ class _ResumeState extends State<Resume> {
           if(ref !=null) {
             //Navigator.push(context,
               //  new MaterialPageRoute(builder: (context) => new Menu()));
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
+            //Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
           }
         }
        )
@@ -342,7 +344,7 @@ class _ResumeState extends State<Resume> {
     );
   }
 }
-getStringValuesSF() async {
+_getStringValuesSF() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   //Return String
   String stringValue = prefs.getString('key');

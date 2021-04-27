@@ -1,26 +1,20 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:jhunt/authentication_service.dart';
-//import 'package:jhunt/theme/routes.dart';
-import 'package:jhunt/screen2.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:jhunt/theme/routes.dart';
-import 'package:provider/provider.dart';
 
-class SignInGoogle extends StatefulWidget {
-  bool _isLoggedIn = false;
+class Registercompany extends StatefulWidget {
+  static const String company = "/company-register";
   @override
-  _SignInGoogleState createState() => _SignInGoogleState();
+  _RegistercompanyState createState() => _RegistercompanyState();
 }
 
-class _SignInGoogleState extends State<SignInGoogle> {
+class _RegistercompanyState extends State<Registercompany> {
   final _formKey = GlobalKey<FormState>();
 
 
-  TextEditingController _passwordController = new TextEditingController();
+  TextEditingController _companynameController = new TextEditingController();
   TextEditingController _emailController= new TextEditingController();
-//  TextEditingController _companyownerController = new TextEditingController();
-  // TextEditingController _repasswordController = new TextEditingController();
+  TextEditingController _companyownerController = new TextEditingController();
+ // TextEditingController _repasswordController = new TextEditingController();
 
 
 
@@ -36,7 +30,7 @@ class _SignInGoogleState extends State<SignInGoogle> {
       //fit: BoxFit.contain,
       height: mq.size.height / 6,
     );
-/*
+
     final companynameField = TextFormField(
       // enabled: isSubmitting,
       controller: _companynameController,
@@ -59,7 +53,7 @@ class _SignInGoogleState extends State<SignInGoogle> {
       ),
     );
 
-*/
+
 
     final emailField = TextFormField(
       //enabled: isSubmitting,
@@ -84,10 +78,10 @@ class _SignInGoogleState extends State<SignInGoogle> {
       ),
     );
 
-    final passwordField = TextFormField(
+    final nameField = TextFormField(
       //enabled: isSubmitting,
-      controller: _passwordController,
-      keyboardType: TextInputType.visiblePassword,
+      controller: _companyownerController,
+      keyboardType: TextInputType.emailAddress,
       style: TextStyle(
           color: Colors.black
       ),
@@ -98,8 +92,8 @@ class _SignInGoogleState extends State<SignInGoogle> {
             color: Colors.black,
           ),
         ),
-        hintText: "Password",
-        labelText: "Enter password",
+        hintText: "Full names",
+        labelText: "Enter names",
         labelStyle: TextStyle(color: Colors.black),
         hintStyle: TextStyle(
           color: Colors.black,
@@ -115,10 +109,10 @@ class _SignInGoogleState extends State<SignInGoogle> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          //companynameField,
+          companynameField,
           emailField,
-          passwordField,
-
+          nameField,
+        //  repasswordField,
 
         ],
       ),
@@ -143,27 +137,27 @@ class _SignInGoogleState extends State<SignInGoogle> {
         onPressed: () async {
           try {
             String email=_emailController.text;
-            String password=_passwordController.text;
-           // String owner=_companyownerController.text;
-            saveUserData(password,email);
-               User user = (await FirebaseAuth.instance
-              .createUserWithEmailAndPassword(
-            email: _emailController.text,
-            password: _passwordController.text,
-               )).user;
-
+            String company=_companynameController.text;
+            String owner=_companyownerController.text;
+            saveUserData(company,email,owner);
+         //   User user = (await FirebaseAuth.instance
+             //   .createUserWithEmailAndPassword(
+         //     email: _emailController.text,
+             //password: _passwordController.text,
+        //    )).user;
+/*
             if(user != null)
             {
-            //  await FirebaseAuth.instance.currentUser.updateProfile(displayName: _companynameController.text);
+              await FirebaseAuth.instance.currentUser.updateProfile(displayName: _companynameController.text);
              // Navigator.of(context).pushNamed(AppRoutes.home);
               Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
             }
-
+            */
           } catch (e) {
             print(e);
-            _passwordController.text = " ";
-            //   _passwordController.text = " ";
-            //_companyownerController.text = " ";
+            _companynameController.text = " ";
+         //   _passwordController.text = " ";
+          _companyownerController.text = " ";
             _emailController.text = " ";
           }
         },
@@ -171,69 +165,11 @@ class _SignInGoogleState extends State<SignInGoogle> {
     );
 
 
-    final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(25.0),
-      color: Colors.blue,
-      child: MaterialButton(
-        minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child:  Text(
-          "Log in",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        onPressed: ()  {
-
-        context.read<AuthenticationService>().signin(
-
-            email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-        );
-
-
-       //context.read<AuthenticationService>().signIn
-
-          /*
-          try {
-            String email=_emailController.text;
-            String password=_passwordController.text;
-            // String owner=_companyownerController.text;
-            saveUserData(password,email);
-            User user = (await FirebaseAuth.instance
-                .createUserWithEmailAndPassword(
-              email: _emailController.text,
-              password: _passwordController.text,
-            )).user;
-
-            if(user != null)
-            {
-              //  await FirebaseAuth.instance.currentUser.updateProfile(displayName: _companynameController.text);
-              // Navigator.of(context).pushNamed(AppRoutes.home);
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
-            }
-
-          } catch (e) {
-            print(e);
-            _passwordController.text = " ";
-            //   _passwordController.text = " ";
-            //_companyownerController.text = " ";
-            _emailController.text = " ";
-          }
-          */
-        },
-      ),
-    );
     final bottom = Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         registerButton,
-        loginButton,
         Padding(
           padding: EdgeInsets.all(0.0),
         ),
@@ -264,14 +200,14 @@ class _SignInGoogleState extends State<SignInGoogle> {
   }
 }
 
-Future<bool> saveUserData(String password,String email, ) async {
+Future<bool> saveUserData(String company,String email,String owner ) async {
   await FirebaseDatabase.instance.reference().
   child("Companies")
       .push()
       .set(<String, Object>{
-
-  //  "email": email,
- //   "owner": owner,
+    "companyName": company,
+    "email": email,
+    "owner": owner,
   }).then((onValue) {
     return true;
   }).catchError((onError) {

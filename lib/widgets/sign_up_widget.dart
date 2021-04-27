@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jhunt/background_painter.dart';
-import 'package:jhunt/google_signup_button_widget.dart';
+import 'package:jhunt/models/background_painter.dart';
+import 'package:jhunt/widgets/google_signup_button_widget.dart';
 
 class SignUpWidget extends StatelessWidget {
   @override

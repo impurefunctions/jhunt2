@@ -3,12 +3,15 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jhunt/homeScreen.dart';
-import 'package:jhunt/sign_google.dart';
+import 'package:jhunt/screens/home_page.dart';
+import 'package:jhunt/screens/home_screen.dart';
+import 'package:jhunt/screens/screens.dart';
+import 'package:jhunt/screens/sign_google.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 class SplashScreen extends StatefulWidget {
+  static const routeName = '/';
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -28,11 +31,12 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        child: Center(child: Image.asset("assets/j3.png")),
+       /* decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/clinician_splash.png"),
+              image: AssetImage("assets/j3.png"),
               fit: BoxFit.cover),
-        ),
+        ),*/
       ),
     );
   }
@@ -49,12 +53,9 @@ class _SplashScreenState extends State<SplashScreen> {
     var status = prefs.getBool('isLoggedIn') ?? false;
     print(status);
     if (status) {
-
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()) );
+    Navigator.of(context).pushNamed(HomeScreen.homeScreen);
     } else {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => SignIn ()));
+      Navigator.pushNamed(context, SignIn.signIn);
     }
   }
 }
