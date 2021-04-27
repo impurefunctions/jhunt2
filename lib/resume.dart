@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:jhunt/views/menu.dart';
+import 'package:jhunt/screen2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:jhunt/views/menu.dart';
 void main() => runApp(Resume());
 
 class Resume extends StatefulWidget {
@@ -252,7 +254,8 @@ class _ResumeState extends State<Resume> {
           ),
         ),
         onPressed: () {
-          ref.child("cv's").push().set({
+          String uid=getStringValuesSF();
+          ref.child("cv's").child(uid).set({
             "surname":_surnameController.text,
           "email": _emailController.text,
           "address":  _addressController .text,
@@ -267,8 +270,9 @@ class _ResumeState extends State<Resume> {
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Resume updated')));
           if(ref !=null) {
-            Navigator.push(context,
-                new MaterialPageRoute(builder: (context) => new Menu()));
+            //Navigator.push(context,
+              //  new MaterialPageRoute(builder: (context) => new Menu()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>Screen2()));
           }
         }
        )
@@ -285,8 +289,6 @@ class _ResumeState extends State<Resume> {
         ),
       ],
     );
-
-
 
 
     final fields = Padding(
@@ -318,24 +320,33 @@ class _ResumeState extends State<Resume> {
       backgroundColor: Colors.blueGrey,
       body: Form(
         key: _formKey,
-        child: SingleChildScrollView(
-            padding: EdgeInsets.all(36),
-            child: Container(
-              height: mq.size.height,
-              child:  Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
 
-                  fields,
-                 bottom,
-                ],
-              ),
+            child: Container(
+              height:  mq.size.height,
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.all(36),
+                child:   Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+
+                    fields,
+                    bottom,
+                  ],
+                ),
+                ),
+
 
             )
-        ),
+
       ),
     );
   }
+}
+getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Return String
+  String stringValue = prefs.getString('key');
+  return stringValue;
 }
 
 

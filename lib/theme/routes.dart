@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:jhunt/views/companyregister_screen.dart';
-import 'package:jhunt/views/login_screen.dart';
-import 'package:jhunt/views/register_screen.dart';
-import 'package:jhunt/views/menu.dart';
-import 'package:jhunt/views/companyhome_screen.dart';
-import 'package:jhunt/views/resume.dart';
+import 'package:jhunt/companyregister_screen.dart';
+import 'package:jhunt/login_screen.dart';
+import 'package:jhunt/register_screen.dart';
+//import 'package:jhunt/companyhome_screen.dart';
+import 'package:jhunt/resume.dart';
 
 
 class AppRoutes{
@@ -20,9 +19,9 @@ class AppRoutes{
     return {
       authLogin: (context) => Login(),
       authRegister: (context) => Register(),
-      menu: (context) => Menu(),
+     // menu: (context) => Menu(),
       company: (context) => Registercompany(),
-      home: (context) => CompanyHomePage(),
+    //  home: (context) => CompanyHomePage(),
       resume: (context) => Resume(),
     };
   }
